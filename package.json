@@ -1,0 +1,22 @@
+{
+  "name": "chat-g-soup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chatgpt": "^5.2.2",
+    "dotenv": "^16.0.3",
+    "instagram-graph-api": "^5.0.0",
+    "midjourney-client": "^1.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.3"
+  }
+}
