@@ -1,0 +1,10 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/bower_components
+babel.config.js
+jest.config.js
+.eslintrc.js
+package.json
+package-lock.json

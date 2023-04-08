@@ -4,19 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "prettier --write .",
+    "post": "node ./src/scripts/createPost.js"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bunyan": "^1.8.15",
     "chatgpt": "^5.2.2",
     "dotenv": "^16.0.3",
     "instagram-graph-api": "^5.0.0",
     "midjourney-client": "^1.0.8"
   },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
     "@types/node": "^18.15.11",
+    "esbuild": "^0.17.15",
+    "prettier": "2.8.7",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-esbuild": "^1.43.0",
     "typescript": "^5.0.3"
   }
 }

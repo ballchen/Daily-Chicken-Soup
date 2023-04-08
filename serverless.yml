@@ -1,0 +1,20 @@
+service: daily-chicken-soup
+frameworkVersion: '3'
+
+useDotenv: true
+
+plugins:
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  cronHandler:
+    handler: src/handlers/createPost.run
+    timeout: 120
+    events:
+      - schedule: cron(0 */12 ? * * *)
+
+

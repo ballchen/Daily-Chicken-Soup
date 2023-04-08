@@ -1,6 +1,6 @@
-import { ChatGPTAPI } from 'chatgpt';
+import { ChatGPTAPI } from "chatgpt";
 import midjourney from "midjourney-client";
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ async function designByChatAPI(idea) {
     completionParams: {
       temperature: 1.5,
       top_p: 1,
-    }
+    },
   });
 
   const question = `
@@ -21,7 +21,11 @@ async function designByChatAPI(idea) {
     You decide all the details and choose random style.
     The answer I need is only the image description.
     The description can not be more than ${LIMIT} words.
-    ${!!idea ? `The image should be related to the following ideas: ${idea}.` : ''}
+    ${
+      !!idea
+        ? `The image should be related to the following ideas: ${idea}.`
+        : ""
+    }
   `;
 
   const res = await chatApi.sendMessage(question);
@@ -29,7 +33,7 @@ async function designByChatAPI(idea) {
 }
 
 async function paint(description) {
-  if(!description) {
+  if (!description) {
     return;
   }
   const images = await midjourney(description);
@@ -38,11 +42,11 @@ async function paint(description) {
 
 async function designAndPaint(idea, usingChatAPI = false) {
   let description = `a random style of painting that makes your spirit feel positive and free that contains random object, highly detailed, concept art ,and should be related to the ideas: ${idea}`;
-  
-  if(usingChatAPI) {
+
+  if (usingChatAPI) {
     description = await designByChatAPI(idea);
   }
-  
+
   const image = await paint(description);
   return {
     description,
@@ -50,7 +54,4 @@ async function designAndPaint(idea, usingChatAPI = false) {
   };
 }
 
-export default {
-  designAndPaint,
-  paint,
-};
+export { designAndPaint, paint };

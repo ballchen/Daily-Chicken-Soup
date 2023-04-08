@@ -1,5 +1,10 @@
-import { GetPageMediaRequest, GetPageMediaResponse, PageOption, PostPagePhotoMediaRequest, GetContainerRequest, PostPublishMediaRequest } from 'instagram-graph-api';
-import * as dotenv from 'dotenv'
+import {
+  GetPageMediaRequest,
+  PostPagePhotoMediaRequest,
+  GetContainerRequest,
+  PostPublishMediaRequest,
+} from "instagram-graph-api";
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
@@ -8,32 +13,40 @@ const PAGE_ID = process.env.PAGE_ID;
 
 async function getPosts() {
   const request = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID);
-  let res = await request.execute();
-  return res.data;
+  const { data } = await request.execute();
+  return data;
 }
 
 async function createContainer(imageUrl, caption) {
-  const request = new PostPagePhotoMediaRequest(ACCESS_TOKEN, PAGE_ID, imageUrl, caption);
-  const res = await request.execute();
-  return res.data;
+  const request = new PostPagePhotoMediaRequest(
+    ACCESS_TOKEN,
+    PAGE_ID,
+    imageUrl,
+    caption
+  );
+  const { data } = await request.execute();
+  return data;
 }
 
 async function getContainer(containerID) {
   const request = new GetContainerRequest(ACCESS_TOKEN, containerID);
-  const res = await request.execute();
-  return res.data;
+  const { data } = await request.execute();
+  return data;
 }
 
 async function publishContainer(containerID) {
-  const request = new PostPublishMediaRequest(ACCESS_TOKEN, PAGE_ID, containerID);
-  const res = await request.execute();
-  return res.data;
+  const request = new PostPublishMediaRequest(
+    ACCESS_TOKEN,
+    PAGE_ID,
+    containerID
+  );
+  const { data } = await request.execute();
+  return data;
 }
 
 async function createAndPublishPost(imageUrl, caption) {
   const { id } = await createContainer(imageUrl, caption);
   await publishContainer(id);
-
   const container = await getContainer(id);
   return container;
 }
@@ -44,4 +57,4 @@ export default {
   publishContainer,
   getContainer,
   createContainer,
-}
+};
