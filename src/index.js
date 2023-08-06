@@ -39,7 +39,7 @@ export default async function main() {
     );
     logger.info(`caption: ${caption}`);
     logger.info(`image: ${image}`);
-    
+
     const container = await instagramAPI.createAndPublishPost(image, caption);
 
     logger.info(`post status: ${container.status_code}`);

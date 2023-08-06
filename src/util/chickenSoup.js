@@ -22,7 +22,7 @@ const chickenSoupMaker = class {
       },
     });
   }
-  
+
   getQuestion({
     who = "有智慧的長者",
     limit = 40,
