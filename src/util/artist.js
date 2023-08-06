@@ -1,6 +1,7 @@
 import { ChatGPTAPI } from "chatgpt";
-import midjourney from "midjourney-client";
 import * as dotenv from "dotenv";
+
+import imageGenerator from "./image-generator.js";
 
 dotenv.config();
 
@@ -36,7 +37,7 @@ async function paint(description) {
   if (!description) {
     return;
   }
-  const images = await midjourney(description);
+  const images = await imageGenerator(description);
   return images[0];
 }
 
